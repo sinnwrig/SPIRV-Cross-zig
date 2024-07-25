@@ -1,0 +1,15 @@
+.{
+    .name = "SPIRV-Tools",
+    .version = "0.1.0",
+    .paths = .{
+        ".",
+        "generated-include",
+        "include",
+        "build.zig",
+        "build.zig.zon",
+        "CODE_OF_CONDUCT.adoc",
+        "LICENSE",
+        "README.md",
+    },
+    .dependencies = .{},
+}
