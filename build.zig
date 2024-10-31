@@ -81,7 +81,11 @@ pub fn build(b: *Build) !void {
             .target = target,
         });
 
-        lib.defineCMacro("SPVC_EXPORT_SYMBOLS", "");
+        if (target.result.os.tag == .windows) {
+            lib.defineCMacro("SPVC_PUBLIC_API", "__declspec(dllexport)");
+        } else {
+            lib.defineCMacro("SPVC_PUBLIC_API", "__attribute__((visibility(\"default\")))");
+        }
     } else {
         lib = b.addStaticLibrary(.{
             .name = "spirv-cross",
